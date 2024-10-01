@@ -3,7 +3,7 @@ def pascal_triangle(n):
     result = []  # This will store the final list of lists (rows of Pascal's triangle)
 
     # Base case: if n is 0, return an empty list
-    if n == 0:
+    if n <= 0:
         return result
 
     # Generate Pascal's Triangle row by row
