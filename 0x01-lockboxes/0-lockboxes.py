@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 module contains a single function that
 determines if all the boxes can be opened.
