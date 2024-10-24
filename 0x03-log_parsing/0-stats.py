@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-'''A script for parsing HTTP request logs.
-'''
+"""A script for parsing HTTP request logs.
+"""
 import re
 
 
 def extract_input(input_line):
-    '''Extracts sections of a line of an HTTP request log.
-    '''
+    """Extracts sections of a line of an HTTP request log.
+    """
     fp = (
         r'\s*(?P<ip>\S+)\s*',
         r'\s*\[(?P<date>\d+\-\d+\-\d+ \d+:\d+:\d+\.\d+)\]',
