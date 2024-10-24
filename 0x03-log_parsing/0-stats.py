@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import sys
 import signal
 
@@ -46,6 +47,3 @@ try:
 
 except Exception as e:
     sys.stderr.write(f"Error: {e}\n")
-
-if __name__ == '__main__':
-    print_statistics()
