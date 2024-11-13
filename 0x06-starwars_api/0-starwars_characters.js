@@ -1,22 +1,35 @@
 #!/usr/bin/node
 
-const https = require("https");
+const request = require('request');
 
-https
-    .get(`https://swapi-api.alx-tools.com/api/`, resp => {
-      let data = "";
+const filmId = process.argv[2];
+const options = {
+  url: `https://swapi-api.alx-tools.com/api/films/${filmId}/`,
+  method: 'GET'
+};
 
-      // A chunk of data has been recieved.
-      resp.on("data", chunk => {
-        data += chunk;
-      });
+request(options, (error, response, body) => {
+  if (error) {
+    console.error('Error making API request:', error);
+    return;
+  }
 
-      // The whole response has been received. Print out the result.
-      resp.on("end", () => {
-        let url = JSON.parse(data).message;
-        console.log(url);
-      });
-    })
-    .on("error", err => {
-      console.log("Error: " + err.message);
-    });
+  const data = JSON.parse(body);
+
+  if (data && data.characters) {
+    printCharacters(data.characters, 0);
+  } else {
+    console.log(`Request failed with status code: ${response.statusCode}`);
+  }
+});
+
+function printCharacters (characters, index) {
+  request(characters[index], function (error, response, body) {
+    if (!error) {
+      console.log(JSON.parse(body).name);
+      if (index + 1 < characters.length) {
+        printCharacters(characters, index + 1);
+      }
+    }
+  });
+}
