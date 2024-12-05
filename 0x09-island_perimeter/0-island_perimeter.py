@@ -6,6 +6,11 @@ of an island in a body of water
 
 
 def island_perimeter(grid):
+    """
+    calculate islan permiter
+    :param grid:
+    :return: perimeter
+    """
     perimeter = 0
     rows = len(grid)
     cols = len(grid[0])
